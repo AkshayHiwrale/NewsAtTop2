@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">News At Top</string>
+
+    <string-array name="categories">
+        <item>Top News</item>
+        <item>Tech</item>
+        <item>Sports</item>
+        <item>Social</item>
+        <item>Top News</item>
+        <item>Tech</item>
+        <item>Sports</item>
+        <item>Social</item>
+
+    </string-array>
 </resources>

@@ -2,7 +2,11 @@ package com.akandro.www.newsattop
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.DividerItemDecoration
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.widget.ArrayAdapter
+import android.widget.LinearLayout
 import android.widget.Toast
 import com.akandro.www.newsattop.Bean.NEWSStatusBean
 import com.squareup.picasso.Picasso
@@ -18,6 +22,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+        var lmanager =LinearLayoutManager(this,
+                LinearLayoutManager.VERTICAL,false)
+
+            rview.addItemDecoration(DividerItemDecoration(this,LinearLayoutManager.VERTICAL))
+
 
 
         var r = Retrofit.Builder().
@@ -41,7 +52,7 @@ class MainActivity : AppCompatActivity() {
                 list.add("Source: "+bean!!.status)
                // list.add("Artical"+bean!!.articles)
                 var artical = bean.articles
-                /*for (a in artical!!) {
+                 /*for (a in artical!!) {
                     list.add("title :"+a.title )
                     list.add("description :"+a.description)
                     list.add("url :"+a.url)
@@ -49,13 +60,17 @@ class MainActivity : AppCompatActivity() {
 
                 }*/
 
-                var adapter = ArrayAdapter<String>(this@MainActivity, android.R.layout.simple_list_item_1, list)
-                lview.adapter = Myadapter(artical,this@MainActivity)
+               // var adapter = ArrayAdapter<String>(this@MainActivity, android.R.layout.simple_list_item_1, list)
+                //lview.adapter = Myadapter(artical,this@MainActivity)
+                rview.layoutManager = lmanager
+                rview.adapter = RviewAdapter(artical,this@MainActivity)
 
             }
 
 
         })
+
+
 
 
 
